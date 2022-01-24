@@ -38,4 +38,4 @@ you can use a config template like the one above and populate it using `envsubst
 CMD ["/bin/sh", "-c", "envsubst < ./dist/assets/env-config.template.js > ./dist/assets/env-config.js && exec nginx -g 'daemon off;'"]
 ```
 
-`@geprog/vite-plugin-env-config` generates the required template from a list of variable names and provides the already populated file during development.
+`@geprog/vite-plugin-env-config` generates the required template from a list of variable names and provides the already populated file via the dev-server during development.
