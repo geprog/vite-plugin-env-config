@@ -14,7 +14,7 @@ describe('createEnvConfigContent', () => {
 
   it('creates an env-config containing given variables and their values', () => {
     // given
-    const variables = ['BACKEND_URL', 'FOO'];
+    const variables = ['BACKEND_URL', 'FOO', 'NOT_SET'];
     process.env.BACKEND_URL = 'http://localhost:4000';
     process.env.FOO = 'bar';
 
@@ -24,6 +24,7 @@ describe('createEnvConfigContent', () => {
     // then
     expect(result).toContain(`window.env['BACKEND_URL']='${process.env.BACKEND_URL}';`);
     expect(result).toContain(`window.env['FOO']='${process.env.FOO}';`);
+    expect(result).toContain(`window.env['NOT_SET']='';`);
     expect(result).toMatchSnapshot();
   });
 

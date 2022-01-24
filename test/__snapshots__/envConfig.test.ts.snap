@@ -2,6 +2,6 @@
 
 exports[`createEnvConfigContent creates an env-config containing given variables and placeholders 1`] = `"(function(window){window.env=window.env||{};window.env['BACKEND_URL']='\${BACKEND_URL}';window.env['FOO']='\${FOO}';})(this);"`;
 
-exports[`createEnvConfigContent creates an env-config containing given variables and their values 1`] = `"(function(window){window.env=window.env||{};window.env['BACKEND_URL']='http://localhost:4000';window.env['FOO']='bar';})(this);"`;
+exports[`createEnvConfigContent creates an env-config containing given variables and their values 1`] = `"(function(window){window.env=window.env||{};window.env['BACKEND_URL']='http://localhost:4000';window.env['FOO']='bar';window.env['NOT_SET']='';})(this);"`;
 
 exports[`createEnvConfigContent creates an env-config that does not set any variables 1`] = `"(function(window){window.env=window.env||{};})(this);"`;
