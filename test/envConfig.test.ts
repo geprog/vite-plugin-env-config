@@ -1,6 +1,6 @@
-import { renderTemplateWithEnvVars } from '~/envConfig';
+import { createEnvConfigContent } from '~/envConfig';
 
-describe('renderTemplateWithEnvVars', () => {
+describe('createEnvConfigContent', () => {
   const env = process.env;
 
   beforeEach(() => {
@@ -12,40 +12,39 @@ describe('renderTemplateWithEnvVars', () => {
     process.env = env;
   });
 
-  it('should replace ${BACKEND_URL} with the respective environment variable', () => {
+  it('creates an env-config containing given variables and their values', () => {
     // given
-    const envConfigTemplate = `
-    (function (window) {
-      window.env = window.env || {};
-    
-      // Environment variables
-      window['env']['BACKEND_URL'] = '\${BACKEND_URL}';
-    })(this);
-    `;
+    const variables = ['BACKEND_URL', 'FOO'];
     process.env.BACKEND_URL = 'http://localhost:4000';
+    process.env.FOO = 'bar';
 
     // when
-    const result = renderTemplateWithEnvVars(envConfigTemplate);
+    const result = createEnvConfigContent(variables, false);
 
     // then
-    expect(result).toBe(envConfigTemplate.replace('${BACKEND_URL}', 'http://localhost:4000'));
+    expect(result).toContain(`window.env['BACKEND_URL']='${process.env.BACKEND_URL}';`);
+    expect(result).toContain(`window.env['FOO']='${process.env.FOO}';`);
+    expect(result).toMatchSnapshot();
   });
 
-  it('should replace ${BACKEND_URL} with an empty string when the respective environment variable is not set', () => {
+  it('creates an env-config containing given variables and placeholders', () => {
     // given
-    const envConfigTemplate = `
-    (function (window) {
-      window.env = window.env || {};
-    
-      // Environment variables
-      window['env']['BACKEND_URL'] = '\${BACKEND_URL}';
-    })(this);
-    `;
+    const variables = ['BACKEND_URL', 'FOO'];
 
     // when
-    const result = renderTemplateWithEnvVars(envConfigTemplate);
+    const result = createEnvConfigContent(variables, true);
 
     // then
-    expect(result).toBe(envConfigTemplate.replace('${BACKEND_URL}', ''));
+    expect(result).toContain(`window.env['BACKEND_URL']='\${BACKEND_URL}';`);
+    expect(result).toContain(`window.env['FOO']='\${FOO}';`);
+    expect(result).toMatchSnapshot();
+  });
+
+  it('creates an env-config that does not set any variables', () => {
+    // when
+    const result = createEnvConfigContent([], true);
+
+    // then
+    expect(result).toMatchSnapshot();
   });
 });
