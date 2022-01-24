@@ -5,7 +5,7 @@ import type { Plugin } from 'vite';
 export function createEnvConfigContent(variables: string[], template: boolean): string {
   let templateContent = '';
   templateContent += '(function(window){window.env=window.env||{};';
-  variables?.forEach((variable) => {
+  variables.forEach((variable) => {
     if (template) {
       templateContent += `window.env['${variable}']='\${${variable}}';`;
     } else {
