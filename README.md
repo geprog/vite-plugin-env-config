@@ -2,41 +2,19 @@
 
 Vite plugin for providing configurations from environment variables at runtime.
 
+The generated template can be populated with [envsubst](https://github.com/a8m/envsubst) in production.
+
 ## Usage
 
-Add `envConfig` plugin to `vite.config.js / vite.config.ts`:
+Add `envConfig` plugin to `vite.config.js / vite.config.ts` and provide a list of environment variable names:
 
 ```js
 // vite.config.js / vite.config.ts
 import { envConfig } from '@geprog/vite-plugin-env-config';
 
 export default {
-  plugins: [envConfig()],
+  plugins: [envConfig({ variables: ['BACKEND_URL'] })],
 };
-```
-
-Add a template file to your project at `./src/assets/env-config.template.js`:
-
-```js
-// ./src/assets/env-config.template.js
-(function (window) {
-  window.env = window.env || {};
-
-  // add a line for each environment variable
-  window['env']['BACKEND_URL'] = '${BACKEND_URL}';
-})(this);
-```
-
-Include `/assets/env-config.js` in your `index.html`:
-
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script src="/assets/env-config.js"></script>
-  </head>
-</html>
 ```
 
 To access the environment variables use the built-in getter:
@@ -57,7 +35,7 @@ Instead of building your frontend on startup,
 you can use a config template like the one above and populate it using `envsubst`:
 
 ```Dockerfile
-CMD ["/bin/sh", "-c", "envsubst < ./src/assets/env-config.template.js > ./dist/assets/env-config.js && exec nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "envsubst < ./dist/assets/env-config.template.js > ./dist/assets/env-config.js && exec nginx -g 'daemon off;'"]
 ```
 
-`@geprog/vite-plugin-env-config` provides the same functionality for your development environment.
+`@geprog/vite-plugin-env-config` generates the required template from a list of variable names and provides the already populated file during development.
