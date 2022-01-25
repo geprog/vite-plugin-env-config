@@ -17,6 +17,11 @@ export function createEnvConfigContent(variables: string[], template: boolean): 
 }
 
 export interface EnvConfigOptions {
+  /**
+   * List of environment variables (case-sensitive) to make available in the frontend.
+   * @default []
+   * @example ['BACKEND_URL']
+   */
   variables: string[];
 }
 
