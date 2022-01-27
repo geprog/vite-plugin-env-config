@@ -8,6 +8,6 @@ export function getEnvConfig<T extends keyof EnvConfig>(key: keyof EnvConfig): E
     return _window.env[key];
   }
   if (globalThis.process?.env) {
-    return global.process.env[key];
+    return globalThis.process.env[key];
   }
 }
