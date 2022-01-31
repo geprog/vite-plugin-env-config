@@ -38,7 +38,7 @@ export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
       const envConfigContent = createEnvConfigContent(userOptions.variables || [], false);
 
       server.middlewares.use((req, res, next) => {
-        if (req.url === '/assets/env-config.js') {
+        if (req.url === '/env-config.js') {
           // standard headers
           res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
           res.setHeader('Cache-Control', 'no-cache');
@@ -55,12 +55,12 @@ export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
     closeBundle() {
       const templateContent = createEnvConfigContent(userOptions.variables || [], true);
 
-      const TEMPLATE_PATH = path.join(root, 'dist', 'assets', 'env-config.template.js');
+      const TEMPLATE_PATH = path.join(root, 'dist', 'env-config.template.js');
       fs.writeFileSync(TEMPLATE_PATH, templateContent, 'utf8');
     },
 
     transformIndexHtml(html) {
-      return html.replace('</head>', '<script src="/assets/env-config.js"></script></head>');
+      return html.replace('</head>', '<script src="/env-config.js"></script></head>');
     },
   };
 }
