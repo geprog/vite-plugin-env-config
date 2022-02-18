@@ -17,8 +17,12 @@
   },
   "typesVersions": {
     "*": {
-      ".": ["./dist/index.d.ts"],
-      "getEnvConfig": ["./dist/getEnvConfig.d.ts"]
+      ".": [
+        "./dist/index.d.ts"
+      ],
+      "getEnvConfig": [
+        "./dist/getEnvConfig.d.ts"
+      ]
     }
   },
   "main": "./dist/index.js",
