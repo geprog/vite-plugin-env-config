@@ -20,7 +20,7 @@ export default {
 To access the environment variables use the built-in getter:
 
 ```ts
-import { getEnvConfig } from '@geprog/vite-plugin-env-config';
+import { getEnvConfig } from '@geprog/vite-plugin-env-config/getEnvConfig';
 
 const backendURL = getEnvConfig('BACKEND_URL');
 ```
