@@ -56,6 +56,7 @@ export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
       const templateContent = createEnvConfigContent(userOptions.variables || [], true);
 
       const TEMPLATE_PATH = path.join(root, 'dist', 'env-config.template.js');
+      fs.mkdirSync(path.dirname(TEMPLATE_PATH), { recursive: true });
       fs.writeFileSync(TEMPLATE_PATH, templateContent, 'utf8');
     },
 
