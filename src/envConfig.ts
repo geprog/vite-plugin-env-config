@@ -1,6 +1,4 @@
-import fs from 'fs';
-import path from 'path';
-import type { Plugin, ResolvedConfig } from 'vite';
+import type { Plugin } from 'vite';
 
 export function createEnvConfigContent(variables: string[], template: boolean): string {
   let templateContent = '';
@@ -26,13 +24,8 @@ export interface EnvConfigOptions {
 }
 
 export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
-  let config: ResolvedConfig;
   return {
     name: 'vite-plugin-env-config',
-
-    configResolved(resolvedConfig) {
-      config = resolvedConfig;
-    },
 
     configureServer(server) {
       const envConfigContent = createEnvConfigContent(userOptions.variables || [], false);
@@ -52,12 +45,13 @@ export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
       });
     },
 
-    closeBundle() {
+    generateBundle() {
       const templateContent = createEnvConfigContent(userOptions.variables || [], true);
-
-      const TEMPLATE_PATH = path.join(config.root, config.build.outDir, 'env-config.template.js');
-      fs.mkdirSync(path.dirname(TEMPLATE_PATH), { recursive: true });
-      fs.writeFileSync(TEMPLATE_PATH, templateContent, 'utf8');
+      this.emitFile({
+        type: 'asset',
+        fileName: 'env-config.template.js',
+        source: templateContent,
+      });
     },
 
     transformIndexHtml(html) {
