@@ -42,6 +42,7 @@ jobs:
         if: "github.event_name == 'pull_request'"
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          skip-step: all
           coverage-file: coverage/coverage-final.json
           base-coverage-file: coverage/coverage-final.json
 
