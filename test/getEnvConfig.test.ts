@@ -1,10 +1,14 @@
+/**
+ * @vitest-environment jsdom
+ */
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+
 import { EnvConfig, getEnvConfig } from '~/getEnvConfig';
 
 describe('getEnvConfig', () => {
   const env = process.env;
 
   beforeEach(() => {
-    jest.resetModules();
     delete (window as unknown as { env?: EnvConfig }).env;
     process.env = { ...env };
   });

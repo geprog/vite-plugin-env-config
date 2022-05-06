@@ -1,11 +1,9 @@
-/**
- * @jest-environment node
- */
 import fs from 'fs';
 import { readFile } from 'fs/promises';
 import path from 'path';
 import request from 'supertest';
 import { build, createServer, ViteDevServer } from 'vite';
+import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 
 import { createEnvConfigContent, envConfig } from '~/envConfig';
 
@@ -13,7 +11,6 @@ describe('createEnvConfigContent', () => {
   const env = process.env;
 
   beforeEach(() => {
-    jest.resetModules();
     process.env = { ...env };
   });
 
@@ -67,7 +64,6 @@ describe('envConfig', () => {
     const env = process.env;
 
     beforeEach(() => {
-      jest.resetModules();
       process.env = { ...env };
     });
 
