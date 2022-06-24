@@ -38,12 +38,6 @@ jobs:
       - name: Unit test
         run: pnpm run test
 
-      - uses: artiomtr/jest-coverage-report-action@v2.0-rc.1
-        if: "github.event_name == 'pull_request'"
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          skip-step: all
-
   typecheck:
     name: Typecheck
     runs-on: ubuntu-latest
