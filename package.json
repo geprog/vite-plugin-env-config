@@ -60,6 +60,9 @@
   "peerDependencies": {
     "vite": "^2.0.0"
   },
+  "engines": {
+    "pnpm": "7"
+  },
   "publishConfig": {
     "access": "public"
   }
