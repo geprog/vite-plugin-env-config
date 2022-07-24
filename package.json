@@ -36,7 +36,7 @@
     "clean": "rm -rf dist/ node_modules/",
     "lint": "eslint --max-warnings 0 .",
     "lint:format": "prettier --check .",
-    "start": "pnpm run build -- --watch",
+    "start": "pnpm run build --watch",
     "test": "vitest run --coverage",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
