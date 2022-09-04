@@ -1,5 +1,8 @@
 # @geprog/vite-plugin-env-config
 
+[![npm version](https://img.shields.io/npm/v/@geprog/vite-plugin-env-config)](https://www.npmjs.com/package/@geprog/vite-plugin-env-config)
+![npm version](https://img.shields.io/npm/dependency-version/@geprog/vite-plugin-env-config/peer/vite)
+
 Vite plugin for providing configurations from environment variables at runtime.
 
 The generated template can be populated with [envsubst](https://github.com/a8m/envsubst) in production.
