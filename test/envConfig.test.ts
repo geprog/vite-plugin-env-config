@@ -79,14 +79,10 @@ describe('envConfig', () => {
       server = await createServer({
         root: FIXTURES_PATH,
         plugins: [envConfig()],
-        server: {
-          port: 3000,
-        },
       });
-      await server.listen();
 
       // when
-      const response = await request('http://localhost:3000').get('/index.html');
+      const response = await request(server.middlewares).get('/index.html');
 
       // then
       expect(response.status).toBe(200);
@@ -103,14 +99,10 @@ describe('envConfig', () => {
       server = await createServer({
         root: FIXTURES_PATH,
         plugins: [envConfig({ variables })],
-        server: {
-          port: 3000,
-        },
       });
-      await server.listen();
 
       // when
-      const response = await request('http://localhost:3000').get('/env-config.js');
+      const response = await request(server.middlewares).get('/env-config.js');
 
       // then
       expect(response.status).toBe(200);
