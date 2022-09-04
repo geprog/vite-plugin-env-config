@@ -43,7 +43,7 @@
     "release": "semantic-release"
   },
   "devDependencies": {
-    "@geprog/eslint-config": "1.1.1",
+    "@geprog/eslint-config": "1.1.2",
     "@geprog/semantic-release-config": "1.0.0",
     "@types/supertest": "2.0.12",
     "@vitest/coverage-c8": "0.22.1",

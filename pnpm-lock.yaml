@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@geprog/eslint-config': 1.1.1
+  '@geprog/eslint-config': 1.1.2
   '@geprog/semantic-release-config': 1.0.0
   '@types/supertest': 2.0.12
   '@vitest/coverage-c8': 0.22.1
@@ -17,7 +17,7 @@ specifiers:
   vitest: 0.22.1
 
 devDependencies:
-  '@geprog/eslint-config': 1.1.1_er5sflmxjcrgfvrsp3qwdvxste
+  '@geprog/eslint-config': 1.1.2_er5sflmxjcrgfvrsp3qwdvxste
   '@geprog/semantic-release-config': 1.0.0_semantic-release@19.0.5
   '@types/supertest': 2.0.12
   '@vitest/coverage-c8': 0.22.1_jsdom@20.0.0
@@ -108,8 +108,8 @@ packages:
       - supports-color
     dev: true
 
-  /@geprog/eslint-config/1.1.1_er5sflmxjcrgfvrsp3qwdvxste:
-    resolution: {integrity: sha512-++/qe3xoKKNbZiCMf+zaAQ1Ec/lZDzNSviff6PJs0ZaAnKY2Xk2q/CF3zAd3VKKy4FTnEk53YTytT+Z3mFOZXg==}
+  /@geprog/eslint-config/1.1.2_er5sflmxjcrgfvrsp3qwdvxste:
+    resolution: {integrity: sha512-3G8LCJAvlCq3TS0cKfwOUyo5LO8Jf3RW/0A/EhGnRoTToilH9G1CmvgcwjjKw69kHaF3lQGiynyFQc8xyI+3UQ==}
     engines: {pnpm: '7'}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0
