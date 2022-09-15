@@ -46,17 +46,17 @@
     "@geprog/eslint-config": "1.1.2",
     "@geprog/semantic-release-config": "1.0.0",
     "@types/supertest": "2.0.12",
-    "@vitest/coverage-c8": "0.22.1",
+    "@vitest/coverage-c8": "0.23.2",
     "c8": "7.12.0",
-    "eslint": "8.23.0",
+    "eslint": "8.23.1",
     "jsdom": "20.0.0",
     "prettier": "2.7.1",
     "semantic-release": "19.0.5",
     "supertest": "6.2.4",
     "tsup": "6.2.3",
-    "typescript": "4.8.2",
-    "vite": "3.0.9",
-    "vitest": "0.22.1"
+    "typescript": "4.8.3",
+    "vite": "3.1.1",
+    "vitest": "0.23.2"
   },
   "peerDependencies": {
     "vite": "^2.0.0 | ^3.0.0"
