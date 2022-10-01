@@ -59,7 +59,7 @@
     "vitest": "0.23.2"
   },
   "peerDependencies": {
-    "vite": "^2.0.0 | ^3.0.0"
+    "vite": "^2.0.0 || ^3.0.0"
   },
   "engines": {
     "pnpm": "7"
