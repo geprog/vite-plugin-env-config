@@ -24,14 +24,19 @@ export interface EnvConfigOptions {
 }
 
 export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
+  let base: string;
   return {
     name: 'vite-plugin-env-config',
+
+    configResolved(config) {
+      base = config.base;
+    },
 
     configureServer(server) {
       const envConfigContent = createEnvConfigContent(userOptions.variables || [], false);
 
       server.middlewares.use((req, res, next) => {
-        if (req.url === '/env-config.js') {
+        if (req.url === `${base}env-config.js`) {
           // standard headers
           res.setHeader('Content-Type', 'application/javascript; charset=utf-8');
           res.setHeader('Cache-Control', 'no-cache');
@@ -55,7 +60,7 @@ export function envConfig(userOptions: Partial<EnvConfigOptions> = {}): Plugin {
     },
 
     transformIndexHtml(html) {
-      return html.replace('</head>', '<script src="/env-config.js"></script></head>');
+      return html.replace('</head>', `<script src="${base}env-config.js"></script></head>`);
     },
   };
 }
