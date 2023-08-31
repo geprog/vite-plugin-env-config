@@ -183,7 +183,7 @@ describe('envConfig', () => {
         plugins: [envConfig()],
       });
       const indexHtml = await readFile(path.join(FIXTURES_PATH, 'dist/index.html'));
-      
+
       // then
       expect(indexHtml.toString()).toContain('<script src="/base/env-config.js"></script>');
     });
