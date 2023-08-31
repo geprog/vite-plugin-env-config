@@ -89,6 +89,24 @@ describe('envConfig', () => {
       expect(response.text).toContain('<script src="/env-config.js"></script>');
     });
 
+    it('serves /index.html that includes envConfig.js script under a base path', async () => {
+      expect.assertions(2);
+
+      // given
+      server = await createServer({
+        root: FIXTURES_PATH,
+        base: '/base',
+        plugins: [envConfig()],
+      });
+
+      // when
+      const response = await request(server.middlewares).get('/base/index.html');
+
+      // then
+      expect(response.status).toBe(200);
+      expect(response.text).toContain('<script src="/base/env-config.js"></script>');
+    });
+
     it('serves /env-config.js', async () => {
       expect.assertions(2);
 
@@ -103,6 +121,27 @@ describe('envConfig', () => {
 
       // when
       const response = await request(server.middlewares).get('/env-config.js');
+
+      // then
+      expect(response.status).toBe(200);
+      expect(response.text).toContain(`window.env['BACKEND_URL']='${process.env.BACKEND_URL}';`);
+    });
+
+    it('serves /env-config.js under a base path', async () => {
+      expect.assertions(2);
+
+      // given
+      const variables = ['BACKEND_URL'];
+      process.env.BACKEND_URL = 'http://localhost:4000';
+
+      server = await createServer({
+        root: FIXTURES_PATH,
+        base: '/base',
+        plugins: [envConfig({ variables })],
+      });
+
+      // when
+      const response = await request(server.middlewares).get('/base/env-config.js');
 
       // then
       expect(response.status).toBe(200);
@@ -131,6 +170,22 @@ describe('envConfig', () => {
 
       // then
       expect(indexHtml.toString()).toContain('<script src="/env-config.js"></script>');
+    });
+
+    it('modifies index.html to include envConfig.js script under a base path', async () => {
+      expect.assertions(1);
+
+      // when
+      await build({
+        logLevel: 'silent',
+        root: FIXTURES_PATH,
+        base: '/base',
+        plugins: [envConfig()],
+      });
+      const indexHtml = await readFile(path.join(FIXTURES_PATH, 'dist/index.html'));
+      
+      // then
+      expect(indexHtml.toString()).toContain('<script src="/base/env-config.js"></script>');
     });
 
     it('creates env-config.template.js containing variables and placeholders', async () => {
