@@ -35,7 +35,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
           run_install: true
 
       - name: Install vite@${{ matrix.vite-version }}
@@ -68,7 +68,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
           run_install: true
 
       - name: Typecheck
@@ -98,7 +98,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
           run_install: true
 
       - name: Lint
@@ -128,7 +128,7 @@ jobs:
 
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
           run_install: true
 
       - name: Check format
