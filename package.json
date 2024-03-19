@@ -46,7 +46,7 @@
     "@geprog/eslint-config": "2.1.1",
     "@geprog/semantic-release-config": "2.0.0",
     "@types/supertest": "6.0.2",
-    "@vitest/coverage-v8": "0.34.3",
+    "@vitest/coverage-v8": "1.4.0",
     "eslint": "8.48.0",
     "jsdom": "24.0.0",
     "prettier": "3.2.5",

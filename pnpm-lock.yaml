@@ -15,8 +15,8 @@ devDependencies:
     specifier: 6.0.2
     version: 6.0.2
   '@vitest/coverage-v8':
-    specifier: 0.34.3
-    version: 0.34.3(vitest@1.4.0)
+    specifier: 1.4.0
+    version: 1.4.0(vitest@1.4.0)
   eslint:
     specifier: 8.48.0
     version: 8.48.0
@@ -68,6 +68,16 @@ packages:
       chalk: 2.4.2
     dev: true
 
+  /@babel/helper-string-parser@7.24.1:
+    resolution: {integrity: sha512-2ofRCjnnA9y+wk8b9IAREroeUP02KHp431N2mhKniy2yKIDKpbrHv9eXwm8cBeWQYcJmzv5qKCu65P47eCF7CQ==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
+  /@babel/helper-validator-identifier@7.22.20:
+    resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
+    engines: {node: '>=6.9.0'}
+    dev: true
+
   /@babel/helper-validator-identifier@7.22.5:
     resolution: {integrity: sha512-aJXu+6lErq8ltp+JhkJUfk1MTGyuA4v7f3pA+BJ5HLfNC6nAQ0Cpi9uOquUj8Hehg0aUiHzWQbOVJGao6ztBAQ==}
     engines: {node: '>=6.9.0'}
@@ -82,11 +92,28 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
+  /@babel/parser@7.24.1:
+    resolution: {integrity: sha512-Zo9c7N3xdOIQrNip7Lc9wvRPzlRtovHVE4lkz8WEDr7uYh/GMQhSiIgFxGIArRHYdJE5kxtZjAf8rT0xhdLCzg==}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dependencies:
+      '@babel/types': 7.24.0
+    dev: true
+
   /@babel/runtime@7.22.11:
     resolution: {integrity: sha512-ee7jVNlWN09+KftVOu9n7S8gQzD/Z6hN/I8VBRXW4P1+Xe7kJGXMwu8vds4aGIMHZnNbdpSWCfZZtinytpcAvA==}
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.14.0
+    dev: true
+
+  /@babel/types@7.24.0:
+    resolution: {integrity: sha512-+j7a5c253RfKh8iABBhywc8NSfP5LURe7Uh4qpsh6jc+aLJguvmIUBdjSdEMQv2bENrCR5MfRdjGo7vzS/ob7w==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/helper-string-parser': 7.24.1
+      '@babel/helper-validator-identifier': 7.22.20
+      to-fast-properties: 2.0.0
     dev: true
 
   /@bcoe/v8-coverage@0.2.3:
@@ -525,6 +552,13 @@ packages:
 
   /@jridgewell/trace-mapping@0.3.19:
     resolution: {integrity: sha512-kf37QtfW+Hwx/buWGMPcR60iF9ziHa6r/CZJIHbmcm4+0qrXiVdxegAH0F6yddEVQ7zdkjcGCgCzUu+BcbhQxw==}
+    dependencies:
+      '@jridgewell/resolve-uri': 3.1.1
+      '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
+  /@jridgewell/trace-mapping@0.3.25:
+    resolution: {integrity: sha512-vNk6aEwybGtawWmy/PzwnGDOjCkLWSD2wqvjGGAgOAwCGWySYXfYoxt00IJkTF+8Lb57DwOb3Aa0o9CApepiYQ==}
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
@@ -1298,22 +1332,25 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
-  /@vitest/coverage-v8@0.34.3(vitest@1.4.0):
-    resolution: {integrity: sha512-bNjP0RHe8UxdklCigZlk6FVCNbOiqVjWnpZJ1zKixpvb7YHSaZiN/w+mzpvXIoqyxyePzKC+L+G1oj7SB20PJw==}
+  /@vitest/coverage-v8@1.4.0(vitest@1.4.0):
+    resolution: {integrity: sha512-4hDGyH1SvKpgZnIByr9LhGgCEuF9DKM34IBLCC/fVfy24Z3+PZ+Ii9hsVBsHvY1umM1aGPEjceRkzxCfcQ10wg==}
     peerDependencies:
-      vitest: '>=0.32.0 <1'
+      vitest: 1.4.0
     dependencies:
       '@ampproject/remapping': 2.2.1
       '@bcoe/v8-coverage': 0.2.3
-      istanbul-lib-coverage: 3.2.0
+      debug: 4.3.4
+      istanbul-lib-coverage: 3.2.2
       istanbul-lib-report: 3.0.1
-      istanbul-lib-source-maps: 4.0.1
+      istanbul-lib-source-maps: 5.0.4
       istanbul-reports: 3.1.6
-      magic-string: 0.30.3
+      magic-string: 0.30.8
+      magicast: 0.3.3
       picocolors: 1.0.0
-      std-env: 3.4.3
+      std-env: 3.7.0
+      strip-literal: 2.0.0
       test-exclude: 6.0.0
-      v8-to-istanbul: 9.1.0
+      v8-to-istanbul: 9.2.0
       vitest: 1.4.0(jsdom@24.0.0)
     transitivePeerDependencies:
       - supports-color
@@ -1917,8 +1954,8 @@ packages:
       split2: 4.2.0
     dev: true
 
-  /convert-source-map@1.9.0:
-    resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
+  /convert-source-map@2.0.0:
+    resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
   /cookiejar@2.1.4:
@@ -3442,8 +3479,8 @@ packages:
       lodash.uniqby: 4.7.0
     dev: true
 
-  /istanbul-lib-coverage@3.2.0:
-    resolution: {integrity: sha512-eOeJ5BHCmHYvQK7xt9GkdHuzuCGS1Y6g9Gvnx3Ym33fz/HpLRYxiS0wHNr+m/MBC8B647Xt608vCDEvhl9c6Mw==}
+  /istanbul-lib-coverage@3.2.2:
+    resolution: {integrity: sha512-O8dpsF+r0WV/8MNRKfnmrtCWhuKjxrq2w+jpzBL5UZKTi2LeVWnWOmWRxFlesJONmc+wLAGvKQZEOanko0LFTg==}
     engines: {node: '>=8'}
     dev: true
 
@@ -3451,18 +3488,18 @@ packages:
     resolution: {integrity: sha512-GCfE1mtsHGOELCU8e/Z7YWzpmybrx/+dSTfLrvY8qRmaY6zXTKWn6WQIjaAFw069icm6GVMNkgu0NzI4iPZUNw==}
     engines: {node: '>=10'}
     dependencies:
-      istanbul-lib-coverage: 3.2.0
+      istanbul-lib-coverage: 3.2.2
       make-dir: 4.0.0
       supports-color: 7.2.0
     dev: true
 
-  /istanbul-lib-source-maps@4.0.1:
-    resolution: {integrity: sha512-n3s8EwkdFIJCG3BPKBYvskgXGoy88ARzvegkitk60NxRdwltLOTaH7CUiMRXvwYorl0Q712iEjcWB+fK/MrWVw==}
+  /istanbul-lib-source-maps@5.0.4:
+    resolution: {integrity: sha512-wHOoEsNJTVltaJp8eVkm8w+GVkVNHT2YDYo53YdzQEL2gWm1hBX5cGFR9hQJtuGLebidVX7et3+dmDZrmclduw==}
     engines: {node: '>=10'}
     dependencies:
+      '@jridgewell/trace-mapping': 0.3.25
       debug: 4.3.4
-      istanbul-lib-coverage: 3.2.0
-      source-map: 0.6.1
+      istanbul-lib-coverage: 3.2.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3742,18 +3779,19 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /magic-string@0.30.3:
-    resolution: {integrity: sha512-B7xGbll2fG/VjP+SWg4sX3JynwIU0mjoTc6MPpKNuIvftk6u6vqhDnk1R80b8C2GBR6ywqy+1DcKBrevBg+bmw==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@jridgewell/sourcemap-codec': 1.4.15
-    dev: true
-
   /magic-string@0.30.8:
     resolution: {integrity: sha512-ISQTe55T2ao7XtlAStud6qwYPZjE4GK1S/BeVPus4jrq6JuOnQ00YKQC581RWhR122W7msZV263KzVeLoqidyQ==}
     engines: {node: '>=12'}
     dependencies:
       '@jridgewell/sourcemap-codec': 1.4.15
+    dev: true
+
+  /magicast@0.3.3:
+    resolution: {integrity: sha512-ZbrP1Qxnpoes8sz47AM0z08U+jW6TyRgZzcWy3Ma3vDhJttwMwAFDMMQFobwdBxByBD46JYmxRzeF7w2+wJEuw==}
+    dependencies:
+      '@babel/parser': 7.24.1
+      '@babel/types': 7.24.0
+      source-map-js: 1.1.0
     dev: true
 
   /make-dir@4.0.0:
@@ -5136,10 +5174,6 @@ packages:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
     dev: true
 
-  /std-env@3.4.3:
-    resolution: {integrity: sha512-f9aPhy8fYBuMN+sNfakZV18U39PbalgjXG3lLB9WkaYTxijru61wb57V9wxxNthXM5Sd88ETBWi29qLAsHO52Q==}
-    dev: true
-
   /std-env@3.7.0:
     resolution: {integrity: sha512-JPbdCEQLj1w5GilpiHAx3qJvFndqybBysA3qUOnznweH4QbNYUsW/ea8QzSrnh0vNsezMMw5bcVool8lM0gwzg==}
     dev: true
@@ -5425,6 +5459,11 @@ packages:
   /tinyspy@2.2.1:
     resolution: {integrity: sha512-KYad6Vy5VDWV4GH3fjpseMQ/XU2BhIYP7Vzd0LG44qRWm/Yt2WCOTicFdvmgo6gWaqooMQCawTtILVQJupKu7A==}
     engines: {node: '>=14.0.0'}
+    dev: true
+
+  /to-fast-properties@2.0.0:
+    resolution: {integrity: sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog==}
+    engines: {node: '>=4'}
     dev: true
 
   /to-regex-range@5.0.1:
@@ -5732,13 +5771,13 @@ packages:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /v8-to-istanbul@9.1.0:
-    resolution: {integrity: sha512-6z3GW9x8G1gd+JIIgQQQxXuiJtCXeAjp6RaPEPLv62mH3iPHPxV6W3robxtCzNErRo6ZwTmzWhsbNvjyEBKzKA==}
+  /v8-to-istanbul@9.2.0:
+    resolution: {integrity: sha512-/EH/sDgxU2eGxajKdwLCDmQ4FWq+kpi3uCmBGpw1xJtnAxEjlD8j8PEiGWpCIMIs3ciNAgH0d3TTJiUkYzyZjA==}
     engines: {node: '>=10.12.0'}
     dependencies:
       '@jridgewell/trace-mapping': 0.3.19
       '@types/istanbul-lib-coverage': 2.0.4
-      convert-source-map: 1.9.0
+      convert-source-map: 2.0.0
     dev: true
 
   /validate-npm-package-license@3.0.4:
